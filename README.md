@@ -1,5 +1,5 @@
 ---
-permalink: /
+permalink: /index.html
 ---
 
 # JS-Common
