@@ -1,6 +1,11 @@
 import EventEmitter from 'await-event-emitter';
 
-export const EventType = type => Symbol(type);
+/**
+ *
+ * @param {string} type - name of the event
+ * @returns {symbol} - symbol
+ */
+export const EventType = (type) => Symbol(type);
 
 /**
  * EventManager for node-platform, you can extend it to create your own EventManager
@@ -10,7 +15,7 @@ export class EventManager extends EventEmitter {
     super();
 
     this.events = events;
-    this.name   = name;
+    this.name = name;
     Object.freeze(this.name); // avoid changing EventManager name
   }
 
@@ -24,7 +29,7 @@ export class EventManager extends EventEmitter {
     const evtName = event.toString().slice(7, -1); // remove "Symbol()" from description
     if (!this.events[evtName] || this.events[evtName] != event) {
       throw new Error(
-        'EventManager (' + this.name + ') have no event: ' + evtName,
+          'EventManager (' + this.name + ') have no event: ' + evtName,
       );
     }
 
@@ -34,7 +39,7 @@ export class EventManager extends EventEmitter {
 
   /**
       @callback listenerCb
-      @param {...object} args
+      @param {...Object} args
    */
   /**
    *
@@ -47,7 +52,7 @@ export class EventManager extends EventEmitter {
     const evtName = event.toString().slice(7, -1); // remove "Symbol()" from description
     if (!this.events[evtName] || this.events[evtName] != event) {
       throw new Error(
-        'EventManager (' + this.name + ') have no event: ' + evtName,
+          'EventManager (' + this.name + ') have no event: ' + evtName,
       );
     }
 

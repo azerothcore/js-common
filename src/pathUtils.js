@@ -1,6 +1,9 @@
 import appRootPath from 'app-root-path';
 import path from 'path';
 
+/**
+ * @returns {string} - returns the appRoot path
+ */
 export function appRoot() {
   return (
     (process.mainModule &&
@@ -9,12 +12,18 @@ export function appRoot() {
   );
 }
 
+/**
+ * @param {string} dest
+ */
 export function fromAppRoot(dest) {
   return path.join(appRoot().toString(), dest);
 }
 
+/**
+ * @param {string} dest
+ */
 export function resolvePath(dest) {
-  return ~['~', '/'].indexOf(dest.charAt(0))
-    ? dest
-    : path.join(appRoot().toString(), dest);
+  return ~['~', '/'].indexOf(dest.charAt(0)) ?
+    dest :
+    path.join(appRoot().toString(), dest);
 }

@@ -3,12 +3,35 @@
   "version": "0.0.6",
   "description": "Common package to be included in every module or service",
   "main": "./src/index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "jest",
+    "build": "tsc",
+    "bundle": "webpack",
+    "dist": "npm run lint && npm run test && npm run build && webpack"
+  },
   "dependencies": {
-    "@types/node": "^13.7.0",
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.13.5",
+    "@typescript-eslint/eslint-plugin": "^2.31.0",
     "app-root-path": "^3.0.0",
     "await-event-emitter": "^1.2.0",
     "dotenv": "^8.2.0",
-    "eslint": "^7.0.0"
+    "eslint": "^7.0.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jest": "^23.10.0",
+    "eslint-plugin-jsdoc": "^25.0.1",
+    "eslint-plugin-json": "^2.1.1",
+    "eslint-plugin-tsdoc": "^0.2.4",
+    "jest": "^26.0.1",
+    "ts-jest": "^25.5.1",
+    "ts-loader": "^7.0.3",
+    "typescript": "^3.8.3",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {
     "install-changed": "^1.1.0",
@@ -17,9 +40,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/azerothcore/js-common"
-  },
-  "_moduleAliases": {
-    "$this/src": "./src"
   },
   "author": "",
   "license": "ISC"

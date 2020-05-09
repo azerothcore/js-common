@@ -1,57 +1,53 @@
 module.exports = {
   env: {
+    // supporting all kind of environment 
+    // to build universal lib
     browser: true,
     commonjs: true,
     es6: true,
-    node: true
+    node: true,
   },
+  parser: "@typescript-eslint/parser",
   extends: [
     "eslint:recommended",
-    "plugin:varspacing/recommended",
-    "plugin:jsdoc/recommended",
-    "plugin:jest/recommended",
-    "plugin:jest/style"
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    'google', // google style guide
+    'plugin:jest/recommended', // jest support
+    'plugin:jest/style', // style for jest files
+    'plugin:jsdoc/recommended', // jsdoc rules to document code 
   ],
-  globals: {
-    Atomics: "readonly",
-    SharedArrayBuffer: "readonly"
-  },
   parserOptions: {
     ecmaVersion: 2018,
-    sourceType: "module"
+    sourceType: 'module',
   },
-  plugins: ["json", "varspacing", "import", "jsdoc", "jest"],
-  ignorePatterns: ["/*", "!src"],
+  plugins: ['json', 'import', 'jsdoc', 'jest', '@typescript-eslint'],
+  ignorePatterns: ['/*', '!src'],
   rules: {
-    "jsdoc/require-jsdoc": 0,
-    "require-atomic-updates": 0, // off: https://github.com/eslint/eslint/issues/11954
-    indent: [
-      "error",
-      2,
-      {
-        SwitchCase: 1,
-        VariableDeclarator: "first"
+    'require-jsdoc': 0, // jsdoc is not mandatory on functions
+    // disable eslint jsdoc internal check, already done by "jsdoc" plugin
+    'valid-jsdoc': 0,
+    'max-len': 0, // disable max length check of code lines
+    // disable the rule for all files
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "new-cap": 0,
+    "jsdoc/require-returns" : "off",
+    "jsdoc/require-param-description" : "off"
+  },
+  "overrides": [
+    {
+      // enable the rule specifically for TypeScript files
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": ["error"]
       }
-    ],
-    "space-in-parens": ["error", "never"],
-    "eol-last": ["error", "always"],
-    "keyword-spacing": [
-      "error",
-      {
-        before: true,
-        after: true
-      }
-    ],
-    "linebreak-style": ["error", "unix"],
-    quotes: ["error", "single"],
-    semi: ["error", "always"],
-    "no-trailing-spaces": ["error"],
-    "comma-dangle": ["error", "always-multiline"],
-    "key-spacing": [
-      "error",
-      {
-        align: "colon"
-      }
-    ]
-  }
+    }
+  ],
+  settings: {
+    jsdoc: {
+      preferredTypes: {
+        object: 'Object',
+      },
+    },
+  },
 };
