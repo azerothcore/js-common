@@ -7,6 +7,7 @@
     "lint": "eslint .",
     "test": "jest",
     "compile": "tsc",
+    "docs" : "typedoc --out docs/jsdoc src",
     "build": "webpack",
     "check": "npm run test && npm run compile && npm run lint",
     "dist": "npm run check && npm run build",
@@ -32,7 +33,6 @@
     "lint-staged": "^10.2.2",
     "ts-jest": "^25.5.1",
     "ts-loader": "^7.0.3",
-    "typedoc": "^0.17.6",
     "typescript": "^3.8.3",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.43.0",
@@ -41,7 +41,8 @@
   },
   "devDependencies": {
     "husky": "^4.2.5",
-    "prettier-eslint": "^9.0.1"
+    "prettier-eslint": "^9.0.1",
+    "typedoc": "^0.17.6"
   },
   "repository": {
     "type": "git",
