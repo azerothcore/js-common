@@ -20,11 +20,6 @@ jobs:
     - run: npm install
     - run: npm run check
     - run: npm run docs
-  docs:
-    runs-on: ubuntu-18.04
-    needs: check
-    name: Generate Documentation
-    steps:
     - uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
