@@ -7,7 +7,8 @@
     "@types/node": "^13.7.0",
     "app-root-path": "^3.0.0",
     "await-event-emitter": "^1.2.0",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "eslint": "^7.0.0"
   },
   "devDependencies": {
     "install-changed": "^1.1.0",
