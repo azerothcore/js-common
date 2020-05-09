@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  node-server:
+    working_dir: /usr/src/service/js-common
+    volumes:
+      - type: bind
+        source: ../
+        target: /usr/src/service
+      - type: volume
+        source: node_modules
+        target: /usr/src/service/js-common/node_modules
+        volume:
+          nocopy: true
