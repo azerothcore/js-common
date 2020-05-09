@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1589050160919" clover="3.2.0">
-  <project timestamp="1589050160920" name="All files">
+<coverage generated="1589053968043" clover="3.2.0">
+  <project timestamp="1589053968044" name="All files">
     <metrics statements="49" coveredstatements="45" conditionals="30" coveredconditionals="24" methods="13" coveredmethods="11" elements="92" coveredelements="80" complexity="0" loc="49" ncloc="49" packages="1" files="4" classes="4"/>
     <file name="EventManager.js" path="/home/runner/work/js-common/js-common/src/EventManager.js">
       <metrics statements="21" coveredstatements="19" conditionals="12" coveredconditionals="9" methods="5" coveredmethods="5"/>
