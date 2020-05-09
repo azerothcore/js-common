@@ -6,9 +6,12 @@
   "scripts": {
     "lint": "eslint .",
     "test": "jest",
-    "build": "tsc",
-    "bundle": "webpack",
-    "dist": "npm run lint && npm run test && npm run build && webpack"
+    "compile": "tsc",
+    "build": "webpack",
+    "check": "npm run test && npm run compile && npm run lint",
+    "dist": "npm run check && npm run build",
+    "remove:modules": "rm -rf node_modules package-lock.json packagehash.txt",
+    "prepublishOnly": "npm run check"
   },
   "dependencies": {
     "@types/jest": "^25.2.1",
@@ -24,9 +27,12 @@
     "eslint-plugin-jsdoc": "^25.0.1",
     "eslint-plugin-json": "^2.1.1",
     "eslint-plugin-tsdoc": "^0.2.4",
+    "install-changed": "^1.1.0",
     "jest": "^26.0.1",
+    "lint-staged": "^10.2.2",
     "ts-jest": "^25.5.1",
     "ts-loader": "^7.0.3",
+    "typedoc": "^0.17.6",
     "typescript": "^3.8.3",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.43.0",
@@ -34,13 +40,24 @@
     "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {
-    "install-changed": "^1.1.0",
+    "husky": "^4.2.5",
     "prettier-eslint": "^9.0.1"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/azerothcore/js-common"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "azerothcore",
+  "license": "AGPL3",
+  "lint-staged": {
+    "**/*.(jsx?|tsx?)": [
+      "npm run check -- --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
 }

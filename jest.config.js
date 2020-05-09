@@ -5,4 +5,7 @@ module.exports = {
     "^.+\\.jsx?$": "ts-jest",
     "^.+\\.tsx?$": "ts-jest"
   },
+  rootDir: process.cwd(),
+  collectCoverage: true,
+  coverageDirectory: '<rootDir>/docs/coverage'
 };
