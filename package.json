@@ -1,0 +1,25 @@
+{
+  "name": "@azerothcore/js-common",
+  "version": "0.0.6",
+  "description": "Common package to be included in every module or service",
+  "main": "./src/index.js",
+  "dependencies": {
+    "@types/node": "^13.7.0",
+    "app-root-path": "^3.0.0",
+    "await-event-emitter": "^1.2.0",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "install-changed": "^1.1.0",
+    "prettier-eslint": "^9.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azerothcore/js-common"
+  },
+  "_moduleAliases": {
+    "$this/src": "./src"
+  },
+  "author": "",
+  "license": "ISC"
+}
