@@ -19,18 +19,18 @@ const moduleAliasNames = [];
 const getBasePathFromFilePath = (filepath) =>
   filepath.replace(/^(.+)[\\/]node_modules$/, '$1');
 
-const getModifiedRequest = ({alias, parentModule, requestedFilePath}) => {
+const getModifiedRequest = ({ alias, parentModule, requestedFilePath }) => {
   const parentFilePath = parentModule.paths.find(
-      (filePath) => moduleAliases[getBasePathFromFilePath(filePath)],
+    (filePath) => moduleAliases[getBasePathFromFilePath(filePath)],
   );
 
   if (!parentFilePath) {
     throw new Error(
-        `The file at '${requestedFilePath}' does not exist.`
-            .concat('\n\n')
-            .concat('Verify these paths:')
-            .concat('\n')
-            .concat(JSON.stringify(moduleAliases, null, 2)),
+      `The file at '${requestedFilePath}' does not exist.`
+        .concat('\n\n')
+        .concat('Verify these paths:')
+        .concat('\n')
+        .concat(JSON.stringify(moduleAliases, null, 2)),
     );
   }
 
@@ -43,7 +43,7 @@ const getModifiedRequest = ({alias, parentModule, requestedFilePath}) => {
 
 const originalResolveFilename = Module._resolveFilename;
 
-Module._resolveFilename = function(requestedFilePath, parentModule, isMain) {
+Module._resolveFilename = function (requestedFilePath, parentModule, isMain) {
   const alias = moduleAliasNames.find((alias) =>
     requestedFilePath.includes(alias),
   );
@@ -57,30 +57,30 @@ Module._resolveFilename = function(requestedFilePath, parentModule, isMain) {
     requestedFilePath;
 
   return originalResolveFilename.call(
-      this,
-      modifiedFilePath,
-      parentModule,
-      isMain,
+    this,
+    modifiedFilePath,
+    parentModule,
+    isMain,
   );
 };
 
 const addModuleAliases = (basePath, aliases) => {
   Object.keys(aliases)
-      .map((alias) => ({
-        alias,
-        filePath: path.join(basePath, aliases[alias]),
-      }))
-      .forEach(({alias, filePath}) => {
-        if (!moduleAliases[basePath]) {
-          moduleAliases[basePath] = {};
-        }
+    .map((alias) => ({
+      alias,
+      filePath: path.join(basePath, aliases[alias]),
+    }))
+    .forEach(({ alias, filePath }) => {
+      if (!moduleAliases[basePath]) {
+        moduleAliases[basePath] = {};
+      }
 
-        moduleAliases[basePath][alias] = filePath;
+      moduleAliases[basePath][alias] = filePath;
 
-        !moduleAliasNames.includes(alias) &&
+      !moduleAliasNames.includes(alias) &&
         moduleAliasNames.push(alias) &&
         moduleAliasNames.sort();
-      });
+    });
 };
 
 const getAliasList = (basePath) =>
