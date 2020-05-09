@@ -53,7 +53,7 @@
   "author": "azerothcore",
   "license": "AGPL3",
   "lint-staged": {
-    "**/*.(jsx?|tsx?)": [
+    "src/**/*": [
       "npm run check -- --fix",
       "git add"
     ]
