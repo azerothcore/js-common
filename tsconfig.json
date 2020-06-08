@@ -13,5 +13,12 @@
   },
   "include": [
     "./src/*"
+  ],
+  "exclude": [
+    "./src/_tests_/**/*",
+    "./src/**/*.spec.ts",
+    "./src/**/*.spec.tsx",
+    "node_modules",
+    "./dist/"
   ]
 }

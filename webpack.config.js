@@ -6,7 +6,7 @@ module.exports = {
   entry: './src/index.ts',
   mode: "production",
   output: {
-    filename: 'index.js', // <-- Important
+    filename: '[name].js', // <-- Important
     libraryTarget: 'this' // <-- Important
   },
   target: 'node', // <-- Important
@@ -42,12 +42,5 @@ module.exports = {
     new webpack.SourceMapDevToolPlugin({
       filename: '[name].js.map',
     })
-  ],
-  exclude: [
-    "./src/_tests_/**/*",
-    "./src/**/*.spec.ts",
-    "./src/**/*.spec.tsx",
-    "node_modules",
-    "./dist/"
   ]
 };
